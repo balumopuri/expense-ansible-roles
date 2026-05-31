@@ -7,26 +7,31 @@
       state: started
       name: nginx
 
-  - name: remove the defualt conent in the server
-    ansible.builtin.file:
-      path: /usr/share/nginx/html
-      state: absent
+  - name: include commmon role
+    include_role:
+      name: common
+      task_from: main
 
-  - name: Create html directory
-    ansible.builtin.file:
-      path: /usr/share/nginx/html
-      state: directory
+  # - name: remove the defualt conent in the server
+  #   ansible.builtin.file:
+  #     path: /usr/share/nginx/html
+  #     state: absent
 
-  - name: Download the configuration code
-    ansible.builtin.get_url:
-      url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
-      dest: /tmp/frontend.zip
+  # - name: Create html directory
+  #   ansible.builtin.file:
+  #     path: /usr/share/nginx/html
+  #     state: directory
+
+  # - name: Download the configuration code
+  #   ansible.builtin.get_url:
+  #     url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
+  #     dest: /tmp/frontend.zip
   
-  - name: Unzip backend code
-    ansible.builtin.unarchive:
-      src: /tmp/frontend.zip
-      dest: /usr/share/nginx/html 
-      remote_src: yes
+  # - name: Unzip backend code
+  #   ansible.builtin.unarchive:
+  #     src: /tmp/frontend.zip
+  #     dest: /usr/share/nginx/html 
+  #     remote_src: yes
   
   - name: copy expense configuration
     ansible.builtin.template:
