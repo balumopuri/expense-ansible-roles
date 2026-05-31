@@ -21,7 +21,7 @@
       name: common
       tasks_from: main
 
-      
+
   # - name: Create a directory for ExpenseApp
   #   ansible.builtin.file:
   #     path: /app 
@@ -65,6 +65,8 @@
       target: /app/schema/backend.sql
 
   - name: daemon reload and restart service
+    tags:
+    - restart
     ansible.builtin.systemd_service:
       name: backend
       enabled: true
