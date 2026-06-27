@@ -9,14 +9,12 @@
     state: started
     name: nginx
 
-- name: include common role
+- name: install nginx
+  ansible.builtin.dnf:
+    name: nginx
+    state: present
+
+- name: include common role    ← dash here
   include_role:
     name: common
     task_from: main
-
-- name: copy expense configuration
-  ansible.builtin.template:
-    src: expense.config.j2
-    dest: /etc/nginx/default.d/expense.conf
-  notify:
-  - Restart Nginx
