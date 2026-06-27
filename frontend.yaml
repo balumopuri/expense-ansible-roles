@@ -1,6 +1,6 @@
 
 - name: configuring frontend server
-  hosts: localhost
+  hosts: frontend
   become: true
   roles:
   - frontend
