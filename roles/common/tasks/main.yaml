@@ -1,6 +1,6 @@
 - name: remove existing directory
   ansible.builtin.file:
-    path: "/app"
+    path: "/usr/share/nginx/html"
     state: absent
 
 
