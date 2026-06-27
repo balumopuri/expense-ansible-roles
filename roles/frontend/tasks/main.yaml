@@ -12,7 +12,6 @@
 - name: include common role
   include_role:
     name: common
-    task_from: main
 
 - name: copy expense configuration
   ansible.builtin.template:
