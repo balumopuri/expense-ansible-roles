@@ -14,7 +14,7 @@
     name: nginx
     state: present
 
-- name: include common role    ← dash here
+- name: include common role   
   include_role:
     name: common
     task_from: main
