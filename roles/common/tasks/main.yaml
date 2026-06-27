@@ -1,12 +1,11 @@
 - name: remove existing directory
   ansible.builtin.file:
-    path: "/usr/share/nginx/html"
+    path: "{{ APP_LOCATION }}"
     state: absent
-
 
 - name: create app directory
   ansible.builtin.file:
-    path: "/app"
+    path: "{{ APP_LOCATION }}"
     state: directory
 
 - name: download app code
